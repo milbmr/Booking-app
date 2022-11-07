@@ -44,7 +44,9 @@
   }
 
   &__calendar {
-    &_icon {
+    position: relative;
+
+    &_booking {
       display: flex;
       gap: 1rem;
       align-items: center;
@@ -52,25 +54,16 @@
       border-radius: 12px;
       transition: all 0.3s;
 
-      position: relative;
-
       &:hover {
         background-color: var(--color-grey-light-2);
         cursor: pointer;
       }
     }
-
-    &_box {
-      position: absolute;
-      top: 20%;
-      box-shadow: 0 1rem 2rem rgba(0,0,0, .15);
-      border: none !important;
-      border-radius: 12px;
-      overflow: hidden;
-    }
   }
 
   &__accomodation {
+    position: relative;
+
     gap: 1rem;
     padding: 1rem 2rem 1rem 2rem;
     transition: all 0.3s;

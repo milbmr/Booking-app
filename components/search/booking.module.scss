@@ -1,0 +1,27 @@
+.box {
+    position: absolute;
+    top: 100%;
+
+    width: 20rem;
+    padding: 2rem;
+    background-color: var(--color-white);
+    border-radius: 12px;
+    box-shadow: 0 1rem 2rem rgba(0,0,0, 0.2);
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+
+        &_num {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 50%;
+            
+        }
+
+        svg {
+            color: red;
+        }
+    }
+}
