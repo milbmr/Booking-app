@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Minus, Plus } from "phosphor-react";
 import classes from "./booking.module.scss";
+import { FiPlusSquare, FiMinusSquare } from "react-icons/fi";
 
 const Booking = () => {
   const [rooms, setRooms] = useState<number>(0);
@@ -42,18 +42,14 @@ const Booking = () => {
       <div className={classes.box__row}>
         <p>Rooms</p>
         <div className={classes.box__row_num}>
-          <Minus
+          <FiMinusSquare
             onClick={countHandler("rooms", "subtract")}
-            width="1.4rem"
-            weight="bold"
             color="#f76707"
             className={classes.box__icon}
           />
           <p>{rooms}</p>
-          <Plus
+          <FiPlusSquare
             onClick={countHandler("rooms", "add")}
-            width="1.4rem"
-            weight="bold"
             color="#f76707"
             className={classes.box__icon}
           />
@@ -63,18 +59,14 @@ const Booking = () => {
       <div className={classes.box__row}>
         <p>Adults</p>
         <div className={classes.box__row_num}>
-          <Minus
+          <FiMinusSquare
             onClick={countHandler("adults", "subtract")}
-            width="1.4rem"
-            weight="bold"
             color="#f76707"
             className={classes.box__icon}
           />
           <p>{adults}</p>
-          <Plus
+          <FiPlusSquare
             onClick={countHandler("adults", "add")}
-            width="1.4rem"
-            weight="bold"
             color="#f76707"
             className={classes.box__icon}
           />
@@ -84,18 +76,14 @@ const Booking = () => {
       <div className={classes.box__row}>
         <p>Children</p>
         <div className={classes.box__row_num}>
-          <Minus
+          <FiMinusSquare
             onClick={countHandler("children", "subtract")}
-            width="1.4rem"
-            weight="bold"
             color="#f76707"
             className={classes.box__icon}
           />
           <p>{children}</p>
-          <Plus
+          <FiPlusSquare
             onClick={countHandler("children", "add")}
-            width="1.4rem"
-            weight="bold"
             color="#f76707"
             className={classes.box__icon}
           />

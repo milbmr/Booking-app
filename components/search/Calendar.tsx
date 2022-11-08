@@ -1,6 +1,9 @@
+import React, { useRef, useImperativeHandle } from 'react';
+
 import MyCalendar from "react-calendar";
 import classes from "./calendar.module.scss";
 import "react-calendar/dist/Calendar.css";
+import { MutableRefObject } from "react";
 
 interface CalendarProp {
     valueHandler: (value: Date[]) => void;
@@ -8,7 +11,8 @@ interface CalendarProp {
     formatedLongEndDate: string;
 }
 
-const Calendar = (props: CalendarProp) => {
+const Calendar = (props: CalendarProp, ref: MutableRefObject<HTMLDivElement | null>) => {
+  const calendarRef = useRef<HTMLDivElement | null>(null);
 
   const dateHandler = (
     value: Date[],
@@ -16,6 +20,7 @@ const Calendar = (props: CalendarProp) => {
   ) => {
     props.valueHandler(value)
   };
+
 
   return (
     <div className={classes.calendar}>

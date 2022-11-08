@@ -1,12 +1,40 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useRef, useEffect, useMemo } from "react";
 import Calendar from "./Calendar";
 import Booking from "./Booking";
 
 import classes from "./search.module.scss";
-import { Bed, Calendar as MyCalendar, User } from "phosphor-react";
+import { IoIosBed } from "react-icons/io";
+import { IoCalendar } from "react-icons/io5";
+import { BsFillPersonFill } from "react-icons/bs";
 
 const Search = () => {
   const [dateValue, setDateValue] = useState<Date[] | null>(null);
+  const [calendarShow, setCalendarShow] = useState<boolean>(false);
+  const calendarRef = useRef<HTMLDivElement>(null);
+
+  const calendarHandler = () => {
+    setCalendarShow((pre) => !pre);
+  };
+
+  const listener = (e: MouseEvent) => {
+    const target = e.target as HTMLDivElement
+    console.log(target)
+    if (
+      calendarRef.current &&
+      !calendarRef.current?.contains(target)
+    ) {
+      if (calendarShow) setCalendarShow(false);
+    }
+  };
+
+  console.log(calendarRef)
+
+  useEffect(() => {
+    document.addEventListener("click", listener);
+    return () => {
+      document.removeEventListener("click", listener);
+    };
+  });
 
   let formatedStartDate = "--";
   let formatedEndDate = "--";
@@ -46,7 +74,7 @@ const Search = () => {
       <form action="">
         <div className={`flex ${classes.search}`}>
           <div className={classes.search__input}>
-            <Bed size="2.4rem" weight="fill" color="#343a40" />
+            <IoIosBed className={classes.search__icon} color="#343a40" />
             <input
               type="text"
               placeholder="Where are you going?"
@@ -54,21 +82,34 @@ const Search = () => {
               required
             />
           </div>
-          <div className={classes.search__calendar}>
+
+          <div
+           ref={calendarRef}
+            onClick={() => setCalendarShow(pre => !pre)}
+            className={classes.search__calendar}
+          >
             <div className={classes.search__calendar_booking}>
-              <MyCalendar size="2.4rem" weight="fill" color="#343a40" />
+              <IoCalendar className={classes.search__icon} color="#343a40" />
               <p>{dateValue ? formatedStartDate : "--"}</p>
               <span>&lt; &gt;</span>
               <p>{dateValue ? formatedEndDate : "--"}</p>
             </div>
-            <Calendar
-              valueHandler={setValueHandler}
-              formatedLongStartDate={formatedLongStartDate}
-              formatedLongEndDate={formatedLongEndDate}
-            />
+            {calendarShow && (
+              <div>
+                <Calendar
+                  valueHandler={setValueHandler}
+                  formatedLongStartDate={formatedLongStartDate}
+                  formatedLongEndDate={formatedLongEndDate}
+                />
+              </div>
+            )}
           </div>
+
           <div className={classes.search__accomodation}>
-            <User size="2.4rem " weight="fill" color="#343a40" />
+            <BsFillPersonFill
+              className={classes.search__icon}
+              color="#343a40"
+            />
             <p>1 Room, 1 Guest</p>
             <Booking />
           </div>
