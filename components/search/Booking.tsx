@@ -1,8 +1,8 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import classes from "./booking.module.scss";
 import { FiPlusSquare, FiMinusSquare } from "react-icons/fi";
 
-const Booking = () => {
+const Booking = React.forwardRef<HTMLDivElement>((props, ref) => {
   const [rooms, setRooms] = useState<number>(0);
   const [adults, setAdults] = useState<number>(0);
   const [children, setChildren] = useState<number>(0);
@@ -38,7 +38,7 @@ const Booking = () => {
   };
 
   return (
-    <div className={classes.box}>
+    <div ref={ref} className={classes.box}>
       <div className={classes.box__row}>
         <p>Rooms</p>
         <div className={classes.box__row_num}>
@@ -91,6 +91,6 @@ const Booking = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Booking;

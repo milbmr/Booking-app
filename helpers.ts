@@ -1,48 +1,51 @@
-import { MutableRefObject, useEffect} from "react";
+import { MutableRefObject, useEffect, useRef} from "react";
 
-export function useClick (ref: MutableRefObject<HTMLDivElement | null>, callback: () => void): void {
+function useClick (ref: MutableRefObject<HTMLDivElement | null>, callback: () => void): void {
   
     useEffect(() => {
       const listener = (e: Event) => {
-        if (ref.current && !ref.current.contains(e.target as Node)) {
-        
+        e.preventDefault();
+        if (ref.current && !ref.current.contains(e.target as HTMLDivElement)) {
           callback();
         }
   
         
   
         document.addEventListener("click", listener);
-        //document.addEventListener("touchstart", listener);
+        document.addEventListener("touchstart", listener);
         return () => {
           document.removeEventListener("click", listener);
-          //document.removeEventListener("touchstart", listener);
+          document.removeEventListener("touchstart", listener);
         };
       };
-    }, [ref]);
+    });
   };
 
 
 
 
-/*export const useClick = (callback: () => void) => {
+/*const useClick = (callback: () => void) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const listener = (e: Event) => {
-      if (!ref.current || ref.current.contains(e.target as Node)) {
+      if (!ref.current || ref.current.contains(e.target as HTMLDivElement)) {
         return;
       }
 
+      console.log('run')
       callback();
 
       document.addEventListener("click", listener);
-      document.addEventListener("touchstart", listener);
+      //document.addEventListener("touchstart", listener);
       return () => {
         document.removeEventListener("click", listener);
-        document.removeEventListener("touchstart", listener);
+        //document.removeEventListener("touchstart", listener);
       };
     };
   }, [ref]);
 
   return ref;
 };*/
+
+export default useClick;

@@ -1,6 +1,7 @@
-import React, { Fragment, useState, useRef, useEffect, useMemo } from "react";
+import React, { Fragment, useState, useRef, useEffect } from "react";
 import Calendar from "./Calendar";
 import Booking from "./Booking";
+import useClick from "../../hook/use-click";
 
 import classes from "./search.module.scss";
 import { IoIosBed } from "react-icons/io";
@@ -10,30 +11,26 @@ import { BsFillPersonFill } from "react-icons/bs";
 const Search = () => {
   const [dateValue, setDateValue] = useState<Date[] | null>(null);
   const [calendarShow, setCalendarShow] = useState<boolean>(false);
-  const calendarRef = useRef<HTMLDivElement>(null);
+  const [bookingShow, setBookingShow] = useState<boolean>(false);
 
-  const calendarHandler = () => {
-    setCalendarShow((pre) => !pre);
+  const calendarHandler = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCalendarShow(true);
+    setBookingShow(false);
   };
 
-  const listener = (e: MouseEvent) => {
-    const target = e.target as HTMLDivElement
-    console.log(target)
-    if (
-      calendarRef.current &&
-      !calendarRef.current?.contains(target)
-    ) {
-      if (calendarShow) setCalendarShow(false);
-    }
+  const bookingHandler = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setBookingShow(true);
+    setCalendarShow(false);
   };
 
-  console.log(calendarRef)
+  const calendarRef = useClick(() => {
+    if (calendarShow) setCalendarShow(false);
+  });
 
-  useEffect(() => {
-    document.addEventListener("click", listener);
-    return () => {
-      document.removeEventListener("click", listener);
-    };
+  const bookingRef = useClick(() => {
+    if (bookingShow) setBookingShow(false);
   });
 
   let formatedStartDate = "--";
@@ -84,8 +81,7 @@ const Search = () => {
           </div>
 
           <div
-           ref={calendarRef}
-            onClick={() => setCalendarShow(pre => !pre)}
+            onClick={(e) => calendarHandler(e)}
             className={classes.search__calendar}
           >
             <div className={classes.search__calendar_booking}>
@@ -95,23 +91,22 @@ const Search = () => {
               <p>{dateValue ? formatedEndDate : "--"}</p>
             </div>
             {calendarShow && (
-              <div>
-                <Calendar
-                  valueHandler={setValueHandler}
-                  formatedLongStartDate={formatedLongStartDate}
-                  formatedLongEndDate={formatedLongEndDate}
-                />
-              </div>
+              <Calendar
+                ref={calendarRef}
+                valueHandler={setValueHandler}
+                formatedLongStartDate={formatedLongStartDate}
+                formatedLongEndDate={formatedLongEndDate}
+              />
             )}
           </div>
 
-          <div className={classes.search__accomodation}>
+          <div onClick={bookingHandler} className={classes.search__accomodation}>
             <BsFillPersonFill
               className={classes.search__icon}
               color="#343a40"
             />
             <p>1 Room, 1 Guest</p>
-            <Booking />
+            {bookingShow && <Booking ref={bookingRef} />}
           </div>
         </div>
       </form>
