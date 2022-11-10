@@ -1,4 +1,5 @@
 import Search from "../components/search/Search";
+import Carousel from "../components/ui/carousel";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <>
       <div className="home">
         <Search />
+        <Carousel />
       </div>
     </>
   );

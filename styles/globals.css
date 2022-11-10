@@ -52,3 +52,9 @@ a {
 .flex {
   display: flex;
 }
+
+.container {
+  position: relative;
+  width:110rem;
+  margin: 0 auto;
+}
