@@ -25,9 +25,9 @@ body {
 38.15   47.68   59.6   74.51   93.13   116.42 */
 
 :root {
-  --color-grey-light-1: #dee2e6;
-  --color-grey-light-2: #ced4da;
-  --color-grey-1: #888;
+  --color-grey-light: #dee2e6;
+  --color-grey: #ced4da;
+  --color-grey-dark: #888;
   --color-white: #fff;
   --color-black: #000;
   --color-secondary: #f76707

@@ -1,13 +1,15 @@
 import Search from "../components/search/Search";
 import Carousel from "../components/ui/carousel";
-import styles from "../styles/Home.module.css";
+import Accordion from "../components/ui/accordion";
 
 export default function Home() {
   return (
     <>
-      <div className="home">
-        <Search />
-        <Carousel />
+      <div className="container">
+        <Accordion />
+        <Accordion />
+        <Accordion />
+        <Accordion />
       </div>
     </>
   );
