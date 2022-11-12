@@ -25,12 +25,15 @@ body {
 38.15   47.68   59.6   74.51   93.13   116.42 */
 
 :root {
+  --color-primary: #1971c2;
+  --color-primary-dark: #1864ab;
+  --color-primary-light: #1c7ed6;
   --color-grey-light: #dee2e6;
   --color-grey: #ced4da;
   --color-grey-dark: #888;
   --color-white: #fff;
   --color-black: #000;
-  --color-secondary: #f76707
+  --color-secondary: #f76707;
 
   --font-ty: 1rem;
   --font-sm: 1.25rem;
@@ -57,4 +60,9 @@ a {
   position: relative;
   width:110rem;
   margin: 0 auto;
+}
+
+.icon {
+  width: 2.2rem;
+  height: 2.2rem;
 }

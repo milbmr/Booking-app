@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import classes from "./booking.module.scss";
+import classes from "./people.module.scss";
 import { FiPlusSquare, FiMinusSquare } from "react-icons/fi";
 
-const Booking = React.forwardRef<HTMLDivElement>((props, ref) => {
+const People = React.forwardRef<HTMLDivElement>((props, ref) => {
   const [rooms, setRooms] = useState<number>(0);
   const [adults, setAdults] = useState<number>(0);
   const [children, setChildren] = useState<number>(0);
@@ -93,4 +93,4 @@ const Booking = React.forwardRef<HTMLDivElement>((props, ref) => {
   );
 });
 
-export default Booking;
+export default People;

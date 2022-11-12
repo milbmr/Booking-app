@@ -1,28 +1,27 @@
-.box {
-    position: absolute;
-    top: 100%;
+.calendar {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-grey-light);
+  border-radius: 12px;
 
-    width: 20rem;
-    padding: 2rem;
-    background-color: var(--color-white);
+  position: relative;
+
+  &__booking {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem 2rem;
     border-radius: 12px;
-    box-shadow: 0 1rem 2rem rgba(0,0,0, 0.2);
+    transition: all 0.3s;
 
-    &__row {
-        display: flex;
-        justify-content: space-between;
-
-        &_num {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 50%;
-            
-        }
+    &:hover {
+      background-color: var(--color-grey);
+      cursor: pointer;
     }
+  }
 
-    &__icon {
-        width: 2rem;
-        height: 2rem;
-    }
+  &__icon {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
 }

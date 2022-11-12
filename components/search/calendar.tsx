@@ -12,13 +12,12 @@ interface CalendarProp {
 
 const Calendar = React.forwardRef<HTMLDivElement, CalendarProp>((props, ref) => {
 
-  let currentValue = new Date(2022, 12, 15);
+  //let currentValue = new Date(2022, 12, 15);
 
   const dateHandler = (
     value: Date[],
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    //currentValue = value;
     props.valueHandler(value)
   };
 
@@ -28,7 +27,6 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProp>((props, ref) => 
       <MyCalendar
         selectRange={true}
         onChange={dateHandler}
-        value={currentValue}
         className={classes.calendar_chart}
       />
       <div className={classes.calendar_box}>
