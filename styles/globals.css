@@ -47,18 +47,18 @@ body {
   --color-font: #343a40;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 .flex {
   display: flex;
 }
 
+.space-between {
+  justify-content: space-between;
+  align-items: center;
+}
+
 .container {
   position: relative;
-  width:110rem;
+  max-width:110rem;
   margin: 0 auto;
 }
 

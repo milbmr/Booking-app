@@ -2,7 +2,7 @@ import { useState } from "react";
 import useClick from "../../hook/use-click";
 import People from "./people";
 import classes from "./staying.module.scss";
-import { BsFillPersonFill } from "react-icons/bs";
+import { BsFillPeopleFill } from "react-icons/bs";
 
 const Staying = () => {
   const [bookingShow, setBookingShow] = useState<boolean>(false);
@@ -17,7 +17,7 @@ const Staying = () => {
 
   return (
     <div onClick={bookingHandler} className={classes.staying}>
-      <BsFillPersonFill className="icon" color="#343a40" />
+      <BsFillPeopleFill className="icon" color="#343a40" />
       <p>1 Room, 1 Guest</p>
       {bookingShow && <People ref={stayRef} />}
     </div>

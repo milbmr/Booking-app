@@ -1,0 +1,42 @@
+.navigation {
+  &__logo {
+    &_txt:link,
+    &_txt:visited {
+      text-decoration: none;
+      color: transparent;
+      background-image: linear-gradient(to bottom, #4dabf7, #1864ab);
+      background-clip: text;
+      -webkit-background-clip: text;
+      font-size: var(--font-lrg);
+      font-weight: 700;
+      font-family: "Marmelad", sans-serif;
+
+      span {
+        background-image: linear-gradient(to bottom, #ff6b6b, #c92a2a);
+        background-clip: text;
+        -webkit-background-clip: text;
+      }
+    }
+  }
+
+  &__cta {
+    font-size: var(--font-md);
+  }
+
+  &__btn {
+    font-size: var(--font-sm-2);
+    font-weight: 600;
+    background: none;
+    border: 2px solid var(--color-white);
+    border-radius: 12px;
+    padding: 1rem 2rem;
+    color: var(--color-white);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: var(--color-white);
+      color: var(--color-black);
+    }
+  }
+}
