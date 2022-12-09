@@ -1,12 +1,12 @@
-import Search from "../components/search/search";
-import Carousel from "../components/ui/carousel";
-import Accordion from "../components/ui/accordion";
-import Header from "../components/header/header";
+import { useEffect } from "react";
+import HotelItem from "../components/hotels/hotel-item";
+import Layout from "../components/layout/layout";
 
 export default function Home() {
+
   return (
-    <>
-        <Header />
-    </>
+    <Layout>
+      <h1>hi</h1>
+    </Layout>
   );
 }
