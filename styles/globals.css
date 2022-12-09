@@ -1,26 +1,103 @@
-html,
-body {
+* {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
-* {
+html {
   box-sizing: border-box;
+  font-size: 62.5%;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+body {
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  line-height: 1.8;
+  color: #343a40;
+}
+
+/* 5.12   6.4   8   10   12.5   15.63   19.53   24.41   30.52   
+38.15   47.68   59.6   74.51   93.13   116.42 */
+
+:root {
+  --color-primary: #1971c2;
+  --color-primary-dark: #1864ab;
+  --color-primary-light: #1c7ed6;
+  --color-grey-light: #dee2e6;
+  --color-grey: #ced4da;
+  --color-grey-dark: #888;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-secondary: #f76707;
+
+  --font-ty: 1rem;
+  --font-sm: 1.25rem;
+  --font-sm-2: 1.563rem;
+  --font-md: 1.953rem;
+  --font-md-2: 2.441rem;
+  --font-bg: 3.052rem;
+  --font-lrg: 3.815rem;
+  --font-huge: 4.768rem;
+
+  --color-font: #343a40;
+}
+
+.flex {
+  display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container {
+  position: relative;
+  max-width: 110rem;
+  margin: 0 auto;
+}
+
+.icon {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.button-blue:link,
+.button-blue:visited {
+  text-decoration: none;
+  background: linear-gradient(to right bottom, #228be6, #1971c2);
+  color: var(--color-white);
+  border-radius: 12px;
+  padding: 0.8rem 1.6rem;
+  cursor: pointer;
+  position: relative;
+
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  overflow: hidden;
+}
+.button-blue::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  background: linear-gradient(to right bottom, #1c7ed6, #1864ab);
+  z-index: -1;
+  transition: all 0.2s ease-in-out;
+}
+
+.button-blue:hover::after,
+.button-blue:active::after {
+  opacity: 1;
 }

@@ -1,9 +1,12 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import { useEffect } from "react";
+import HotelItem from "../components/hotels/hotel-item";
+import Layout from "../components/layout/layout";
 
 export default function Home() {
+
   return (
-    
-  )
+    <Layout>
+      <h1>hi</h1>
+    </Layout>
+  );
 }
