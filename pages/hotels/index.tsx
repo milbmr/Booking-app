@@ -1,11 +1,14 @@
 import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { getHotelList } from "../../store/thunk";
 import HotelItem from "../../components/hotels/hotel-item";
 
 const HotelsPage = () => {
-
+    const dispatch = useAppDispatch();
+    const hotels = useAppSelector((state) => state.hotels.hotels)
 
     useEffect(()=>{
-        fetch("api/hotels").then(res => res.json()).then(data => console.log(data))
+        dispatch(getHotelList())
     }, [])
 
     return(
