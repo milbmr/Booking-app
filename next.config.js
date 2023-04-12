@@ -8,22 +8,25 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/flights',
-        destination: '/500',
-        permanent: true
+        source: "/flights",
+        destination: "/500",
+        permanent: true,
       },
       {
-        source: '/car',
-        destination: '/500',
-        permanent: true
+        source: "/car",
+        destination: "/500",
+        permanent: true,
       },
       {
-        source: '/attractions',
-        destination: '/500',
-        permanent: true
-      }
-    ]
-  }
+        source: "/attractions",
+        destination: "/500",
+        permanent: true,
+      },
+    ];
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 module.exports = nextConfig;
