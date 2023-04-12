@@ -9,9 +9,13 @@ import {
   city,
 } from "types";
 
+const production = process.env.NODE_ENV === "production";
+
 export const api = createApi({
   reducerPath: "hotelApi",
-  baseQuery: fetchBaseQuery({ baseUrl: Routes.API.BASEURL }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: production ? Routes.API.BASEURL_PRO : Routes.API.BASEURL_DEV,
+  }),
   extractRehydrationInfo(action, { reducerPath }) {
     if (action.type === HYDRATE) {
       return action.payload[reducerPath];
@@ -19,7 +23,7 @@ export const api = createApi({
   },
   endpoints: (builder) => ({
     getHotel: builder.query<HotelDataType[], number | void>({
-      query: (batch=1) => {
+      query: (batch = 1) => {
         return {
           url: Routes.API.HOTELS,
           params: { batch: batch },
