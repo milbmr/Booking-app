@@ -8,7 +8,6 @@ export const useIsAuthenticated = () => {
   const [user, setUser] = useState<User | null>(null);
   const [getUser] = useLazyGetUserQuery();
   const { data: session, status } = useSession();
-  console.log(session)
 
   const email = session?.user?.email;
 

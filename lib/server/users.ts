@@ -47,11 +47,11 @@ export const getUser = async (email: string) => {
 
 export const getIsAuthUser = async (params: GetSessionParams) => {
   const session = await getSession(params);
-  const id = session?.user?.id;
+  const email = session?.user?.email;
 
-  if (!id) return null;
+  if (!email) return null;
 
-  const user = await getUser(id);
+  const user = await getUser(email);
 
   return user;
 };
