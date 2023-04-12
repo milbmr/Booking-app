@@ -4,7 +4,7 @@ export const Routes = {
   },
   API: {
     BASEURL_DEV: "http://localhost:3000/api/",
-    BASEURL_PRO: "https://skytra-miloamg-gmailcom.vercel.app/api/",
+    BASEURL_PRO: "https://skytra.vercel.app/api/",
     USERS: "/users",
     FACILITIES: "/facilities",
     HOTELS: "/hotels",
