@@ -1,7 +1,5 @@
-import Layout from "../../components/layout/layout";
-
 const AttractionsPage = () => {
-    return <Layout><h4>Attractions</h4></Layout>
-}
+  return <h4>Attractions</h4>;
+};
 
 export default AttractionsPage;

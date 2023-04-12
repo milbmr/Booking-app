@@ -1,0 +1,21 @@
+.accordionItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: var(--color-white);
+
+  &__icon {
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &.show {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__heading {
+    font-size: var(--font-sm);
+    font-weight: 500;
+  }
+}

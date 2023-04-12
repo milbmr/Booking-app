@@ -1,7 +1,5 @@
-import Layout from "../../components/layout/layout";
-
 const CarPage = () => {
-    return <Layout><h4>car</h4></Layout>
-}
+  return <h4>car</h4>;
+};
 
 export default CarPage;

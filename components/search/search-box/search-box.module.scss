@@ -1,0 +1,15 @@
+.searchbox {
+  background-color: var(--color-white);
+  border-radius: 12px;
+  width: 60%;
+  margin: 0 auto;
+  padding: 3rem;
+
+  &__nav {
+    border-bottom: 1px solid var(--color-grey);
+  }
+
+  &__search {
+    margin-top: 4rem;
+  }
+}

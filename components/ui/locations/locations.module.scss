@@ -1,0 +1,22 @@
+.locations {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+
+    &_location {
+        font-size: var(--font-sm-2);
+        font-weight: 300;
+        color: #777;
+    }
+
+    &_location:not(:last-child) {
+        text-transform: capitalize;
+    }
+
+    span {
+        display: block;
+        font-size: var(--font-sm-2);
+        font-weight: 300;
+        color: #777;
+    }
+}

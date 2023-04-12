@@ -1,25 +1,16 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import sjcl from "sjcl";
+import { apiHandler } from "lib/server/nc";
+import { validateHotelQuery } from "lib/server/validation";
+import { getHotels } from "lib/server/hotel";
 
-function handler(req: NextApiRequest, res: NextApiResponse) {
-  const apiKey = process.env.API_KEY!;
-  const apiSecret = process.env.API_SECRET!;
-  const apiUrlHotels = process.env.API_URL_HOTELS!;
+const handler = apiHandler();
 
+handler.get(async (req: NextApiRequest, res: NextApiResponse) => {
+  const { batch } = validateHotelQuery(req.query);
+  const queryNum = +batch;
+  const hotels = await getHotels(queryNum);
 
-  const sec = Math.round(Date.now() / 1000) + "";
-  const myString = apiKey + apiSecret + sec;
-  const bitArr = sjcl.hash.sha256.hash(myString);
-  const hash = sjcl.codec.hex.fromBits(bitArr);
-
-  fetch(apiUrlHotels, {
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-      "Api-key": apiKey,
-      "X-Signature": hash,
-    },
-  }).then(res => res.json()).then(data => res.json(data)).catch(err => console.log(err))
-}
+  res.status(200).json(hotels);
+});
 
 export default handler;

@@ -1,14 +1,14 @@
-import SearchBox from '../search/search-box';
-import NavigationBar from '../ui/navigation-bar';
-import classes from './header.module.scss';
+import SearchBox from "../search/search-box/search-box";
+import { Nav } from "../layout";
+import classes from "./header.module.scss";
 
 const Header = () => {
-return (
+  return (
     <div className={classes.header}>
-        <NavigationBar />
-        <SearchBox />
+      <Nav />
+      <SearchBox />
     </div>
-)
+  );
 };
 
 export default Header;

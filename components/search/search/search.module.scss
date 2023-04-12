@@ -1,0 +1,21 @@
+.search {
+  --grid-column: 3fr 2fr 2fr 1fr;
+  --grid-row: 1fr;
+
+  display: grid;
+  grid-template-columns: var(--grid-column);
+  grid-template-rows: var(--grid-row);
+  gap: 1rem;
+  justify-content: center;
+  font-size: var(--font-sm-2);
+
+  @media screen and (max-width: 70em) {
+    --grid-column: 1fr 1fr;
+    --grid-row: 1fr 1fr;
+  }
+
+  @media screen and (max-width: 32.25em) {
+    --grid-column: 1fr;
+    --grid-row: repeat(4, 1fr);
+  }
+}

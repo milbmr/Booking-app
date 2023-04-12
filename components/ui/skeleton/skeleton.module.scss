@@ -1,0 +1,28 @@
+.box {
+  display: flex;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.15);
+  background-color: var(--color-white);
+  margin-bottom: 2rem;
+  height: 20rem;
+}
+
+.image {
+  width: 30%;
+}
+
+.info {
+  width: 50%;
+}
+
+.action {
+  display: flex;
+  width: 20%;
+
+  &_box {
+    margin-top: auto;
+    height: 50%;
+    width: 100%;
+  }
+}

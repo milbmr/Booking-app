@@ -1,7 +1,5 @@
-import Layout from "../../components/layout/layout";
-
 const FlightsPage = () => {
-    return <Layout><h4>flights</h4></Layout>
-}
+  return <h4>flights</h4>;
+};
 
 export default FlightsPage;

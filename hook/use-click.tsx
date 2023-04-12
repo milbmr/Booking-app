@@ -1,17 +1,17 @@
-import { useEffect, MutableRefObject, useRef } from "react";
+import { useEffect, useRef, MutableRefObject } from "react";
 
-function useClick(callback: () => void) {
-  const ref = useRef<HTMLDivElement>(null);
-
+function useClick(
+  callback: () => void,
+  ref: MutableRefObject<HTMLDivElement | null>
+) {
   useEffect(() => {
     const listener = (e: Event) => {
       e.preventDefault();
 
       const target = e.target as HTMLDivElement;
+      const node = ref.current?.contains(target);
 
-      if (ref.current && !ref.current.contains(target)) {
-        callback();
-      }
+      if (ref.current !== null && !node) callback();
     };
 
     document.addEventListener("click", listener);
@@ -21,8 +21,6 @@ function useClick(callback: () => void) {
       document.removeEventListener("touchstart", listener);
     };
   });
-
-  return ref;
 }
 
 export default useClick;

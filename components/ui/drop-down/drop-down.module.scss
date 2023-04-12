@@ -1,0 +1,28 @@
+.drop {
+    position: relative;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    &__btn {
+        background: none;
+        border: none;
+        width: 1.8rem;
+        height: 1.8rem;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+
+        &:hover {
+            background: var(--color-grey);
+        }
+
+        &_icon {
+            width: 1.7rem;
+            height: 1.7rem;
+        }
+    }
+}

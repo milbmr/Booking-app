@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  booking:
+    image: booking-app
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    ports:
+      - 3000:3000
+    env_file:
+      - ./.env.local
+    command: "npm run dev"  

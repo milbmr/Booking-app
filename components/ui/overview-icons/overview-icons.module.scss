@@ -1,0 +1,56 @@
+.icon {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: flex-start;
+
+  @media screen and (max-width: 48em) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  &__div {
+    height: 12rem;
+    border-radius: 5px;
+    padding-left: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    flex: 1 1 0;
+  }
+
+  &__rating {
+    color: #fff;
+
+    &_rate {
+      display: block;
+      font-size: var(--font-lrg);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    &_comment {
+      font-size: var(--font-sm-2);
+    }
+  }
+
+  &__icondiv {
+    border: 1px solid #000;
+
+    &_icon {
+      height: 2.4rem;
+      width: 2.4rem;
+    }
+
+    &_text {
+      font-size: var(--font-sm);
+      font-size: 300;
+      margin: 0px;
+      padding: 0px;
+    }
+  }
+}

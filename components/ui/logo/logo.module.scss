@@ -1,0 +1,19 @@
+.logo {
+    &_txt:link,
+    &_txt:visited {
+      text-decoration: none;
+      color: transparent;
+      background-image: linear-gradient(to bottom, #862e9c, #1864ab);
+      background-clip: text;
+      -webkit-background-clip: text;
+      font-size: var(--font-lrg);
+      font-weight: 700;
+      font-family: "Marmelad", sans-serif;
+
+      span {
+        background-image: linear-gradient(to bottom, #a61e4d, #c92a2a);
+        background-clip: text;
+        -webkit-background-clip: text;
+      }
+    }
+  }

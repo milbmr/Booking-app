@@ -1,0 +1,13 @@
+.image {
+  background-color: #ffd8a8;
+  color: #fd7e14;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__letter {
+    font-size: var(--font-sm-2);
+    font-weight: 500;
+  }
+}

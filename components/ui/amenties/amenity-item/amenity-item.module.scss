@@ -1,0 +1,16 @@
+.item {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+
+    &__icon {
+        width: 1.8rem;
+        height: 1.8rem;
+        color: #000;
+    }
+
+    &__text {
+        font-size: var(--font-sm-2);
+        font-weight: 300;
+    }
+}

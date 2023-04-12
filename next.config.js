@@ -2,6 +2,28 @@
 const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
-}
+  images: {
+    domains: ["photos.hotelbeds.com"],
+  },
+  async redirects() {
+    return [
+      {
+        source: '/flights',
+        destination: '/500',
+        permanent: true
+      },
+      {
+        source: '/car',
+        destination: '/500',
+        permanent: true
+      },
+      {
+        source: '/attractions',
+        destination: '/500',
+        permanent: true
+      }
+    ]
+  }
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

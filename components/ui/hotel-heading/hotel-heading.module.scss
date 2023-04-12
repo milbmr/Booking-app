@@ -1,0 +1,40 @@
+.heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  margin: 2rem 0;
+
+  &__info {
+    font-size: var(--font-sm-2);
+
+    &_head {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-weight: 500;
+    }
+
+    &_address {
+        margin-bottom: 2px;
+      h4 {
+        font-weight: 300;
+      }
+    }
+  }
+
+  &__action {
+    flex-basis: 15%;
+    &_price {
+        font-size: var(--font-sm);
+        text-align: end;
+
+        p {
+            span {
+                font-size: var(--font-md-2);
+                font-weight: 500;
+            }
+        }
+    }
+  }
+}
