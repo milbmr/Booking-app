@@ -1,11 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import CarouselItem from "../carousel-item";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { HotelDataType } from "types";
 import classes from "./carousel.module.scss";
-import Link from "next/link";
-
-const imagesData = ["france", "london", "vienna", "rome", "madrid"];
+import { useRouter } from "next/router";
 
 const Carousel = ({
   column = 1,
@@ -24,11 +22,18 @@ const Carousel = ({
     classes.carousel__button_left_hide
   );
 
-  if (!data && !localImages) return null;
+  const router = useRouter()
 
-  const images: any = data ? data.slice(0, itemNumber) : localImages;
+  console.log(router)
 
-  const mappedData = images.map((image: any) => {
+  let images;
+  if (!data) {
+    images = localImages;
+  } else if (!localImages) {
+    images = data.slice(0, itemNumber);
+  } else return null;
+
+  const mappedData = images?.map((image: any) => {
     const path = data
       ? `http://photos.hotelbeds.com/giata/bigger/${image.images[1].path}`
       : `/images/${image}.jpg`;
@@ -37,6 +42,7 @@ const Carousel = ({
         column={column}
         image={path}
         index={index}
+        link={data && image._id}
         key={data ? image._id : image}
       />
     );

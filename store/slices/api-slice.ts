@@ -9,12 +9,10 @@ import {
   city,
 } from "types";
 
-const production = process.env.NODE_ENV === "production";
-
 export const api = createApi({
   reducerPath: "hotelApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: production ? Routes.API.BASEURL_PRO : Routes.API.BASEURL_DEV,
+    baseUrl: Routes.API.BASEURL,
   }),
   extractRehydrationInfo(action, { reducerPath }) {
     if (action.type === HYDRATE) {
