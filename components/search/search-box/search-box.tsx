@@ -4,14 +4,20 @@ import SearchNavbar from "../../ui/search-navbar/search-navbar";
 import classes from "./search-box.module.scss";
 
 const SearchBox = () => {
-  const media = useMediaQuery("516");
+  const isMobile = useMediaQuery("516");
+  console.log(isMobile);
   return (
     <div className={classes.searchbox}>
-      <div className={classes.searchbox__nav}>
-        {!media && <SearchNavbar borderStyle={true} />}
-      </div>
-      <div className={classes.searchbox__search}>
-          <Search />
+      {!isMobile && (
+        <div className={classes.searchbox__nav}>
+          <SearchNavbar borderStyle={true} />
+        </div>
+      )}
+      <div
+        style={isMobile ? { marginTop: "0" } : {}}
+        className={classes.searchbox__search}
+      >
+        <Search />
       </div>
     </div>
   );

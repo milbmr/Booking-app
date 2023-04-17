@@ -22,10 +22,6 @@ const Carousel = ({
     classes.carousel__button_left_hide
   );
 
-  const router = useRouter()
-
-  console.log(router)
-
   let images;
   if (!data) {
     images = localImages;
@@ -76,12 +72,14 @@ const Carousel = ({
         <button
           onClick={slideHandler("right")}
           className={`${classes.carousel__button} ${classes.carousel__button_right} ${classHideRight}`}
+          disabled={classHideRight !== ""}
         >
           <BiChevronRight size="2.2rem" />
         </button>
         <button
           onClick={slideHandler("left")}
           className={`${classes.carousel__button} ${classes.carousel__button_left} ${classHideLeft}`}
+          disabled={classHideLeft !== ""}
         >
           <BiChevronLeft size="2.2rem" />
         </button>

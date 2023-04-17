@@ -1,14 +1,14 @@
 .staying {
   position: relative;
+  border: 1px solid transparent;
+  background-color: var(--color-grey-light);
+  border-radius: 12px;
+  padding: 1rem 2rem 1rem 2rem;
 
   &__info {
     display: flex;
     gap: 1rem;
     align-items: center;
-    border: 1px solid transparent;
-    background-color: var(--color-grey-light);
-    border-radius: 12px;
-    padding: 1rem 2rem 1rem 2rem;
     transition: background-color 0.3s;
 
     &:hover {

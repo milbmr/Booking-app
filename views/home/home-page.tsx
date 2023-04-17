@@ -23,6 +23,7 @@ function accordionArray(data: any[], arr: ReactNode[], idx: number) {
 
 const HomePage = ({ hotels }: { hotels: HotelDataType[] }) => {
   const media = useMediaQuery('768');
+  const isMobile = useMediaQuery('516');
 
   const cities = filter.cityFilter(hotels);
 
@@ -33,11 +34,11 @@ const HomePage = ({ hotels }: { hotels: HotelDataType[] }) => {
     <Fragment>
       <div className="mt-40">
         <CarouselHeader title="See Destinations" />
-        <Carousel data={hotels} column={!media ? 4 : 2} itemNumber={10} />
+        <Carousel data={hotels} column={!media ? 4 : 1} itemNumber={10} />
       </div>
       <div className="mt-40">
         <CarouselHeader title="Top Attractions" />
-        <Carousel localImages={["snow", "river"]} column={2} />
+        <Carousel localImages={["snow", "river"]} column={!media ? 2 : 1} />
       </div>
       <div className="container">
         <div className="grid grid-cols-4 gap-x-4 mt-40 mb-40 @screen md:grid-cols-2">{accordions}</div>

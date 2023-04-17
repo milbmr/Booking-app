@@ -1,46 +1,50 @@
 .carousel {
-    position: relative;
+  position: relative;
 
-    &__items {
-        display: flex;
-        overflow: hidden;
+  &__items {
+    display: flex;
+    overflow: hidden;
+
+    @media screen and (max-width: 32.25em) {
+        height: 30rem;
+      }
+  }
+
+  &__button {
+    position: absolute;
+    background-color: var(--color-white);
+    border: none;
+    box-shadow: 0 3px 6px rgb(25 32 36 / 16%), 0 -1px 4px rgb(25 32 36 / 4%);
+    border-radius: 5px;
+    padding: 1rem 0.7rem;
+    cursor: pointer;
+    z-index: 100;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+
+    &_left {
+      top: 50%;
+      left: 0;
+      transform: translate(-35%, -50%);
+
+      &_hide {
+        opacity: 0;
+        visibility: hidden;
+      }
     }
 
-    &__button {
-        position: absolute;
-        background-color: var(--color-white);
-        border: none;
-        box-shadow: 0 3px 6px rgb(25 32 36 / 16%), 0 -1px 4px rgb(25 32 36 / 4%);
-        border-radius: 5px;
-        padding: 1rem .7rem;
-        cursor: pointer;
-        z-index: 100;
+    &_right {
+      top: 50%;
+      right: 0;
+      transform: translate(35%, -50%);
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: all .5s;
-
-        &_left {
-            top: 50%;
-            left: 0;
-            transform: translate(-35%, -50%);
-
-            &_hide {
-                opacity: 0;
-                visibility: hidden;
-            }
-        }
-
-        &_right {
-            top: 50%;
-            right: 0;
-            transform: translate(35%, -50%);
-
-            &_hide {
-                opacity: 0;
-                visibility: hidden;
-            }
-        }
+      &_hide {
+        opacity: 0;
+        visibility: hidden;
+      }
     }
+  }
 }
