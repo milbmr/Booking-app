@@ -4,8 +4,8 @@ import SearchNavbar from "../../ui/search-navbar/search-navbar";
 import classes from "./search-box.module.scss";
 
 const SearchBox = () => {
-  const isMobile = useMediaQuery("516");
-  console.log(isMobile);
+  const width = useMediaQuery();
+  const isMobile = width < 516;
   return (
     <div className={classes.searchbox}>
       {!isMobile && (

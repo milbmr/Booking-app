@@ -27,7 +27,8 @@ const MapNoSSR = dynamic(() => import("components/ui/map"), {
 const HotelDetail = () => {
   const [showAmenities, setShowAmenities] = useState(false);
   const [showMore, setShowMore] = useState(false);
-  const isMobile = useMediaQuery('768');
+  const width = useMediaQuery();
+  const isMobile = width < 768;
 
   const router = useRouter();
   const { hotelid } = router.query;

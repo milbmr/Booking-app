@@ -8,10 +8,11 @@ import { ImageType } from "types";
 
 const images = ["france", "london", "madrid", "rome", "vienna"];
 
-const ImageGrid = ({ images }: { images: ImageType[] | undefined}) => {
+const ImageGrid = ({ images }: { images: ImageType[] | undefined }) => {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useAppDispatch();
-  const isMobile = useMediaQuery('768');
+  const width = useMediaQuery();
+  const isMobile = width < 768;
 
   const showModalHandler = (index: number) => {
     document.body.classList.add("modal--show");

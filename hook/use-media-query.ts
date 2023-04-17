@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
+import useViewport from "./use-viewport";
 
-const useMediaQuery = (width: string) => {
-  const [media, setMedia] = useState<boolean>(false);
+const useMediaQuery = () => {
+  const [media, setMedia] = useState<number>(0);
+  const { isViewport } = useViewport();
 
   useEffect(() => {
-    const media = window.matchMedia(`(max-width: ${width}px)`);
-    media.addEventListener("change", (e: any) => setMedia(e.matches));
-    return () =>
-      media.removeEventListener("change", (e: any) => setMedia(e.matches));
-  }, []);
+    const handleView = () => setMedia(isViewport ? window.innerWidth : 0);
+    handleView();
+
+    window.addEventListener("resize", handleView);
+    return () => window.removeEventListener("resize", handleView);
+  }, [isViewport]);
 
   return media;
 };

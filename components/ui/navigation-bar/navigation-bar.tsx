@@ -4,12 +4,12 @@ import { Nav } from "components/layout";
 import classes from "./navigation-bar.module.scss";
 
 const NavigationBar = () => {
-  const isMobile = useMediaQuery('768');
+  const width = useMediaQuery();
+  const isMobile = width < 768;
+
   return (
     <div className={classes.navbar}>
-      <Nav>
-        {!isMobile && <SearchNavbar />}
-      </Nav>
+      <Nav>{!isMobile && <SearchNavbar />}</Nav>
     </div>
   );
 };

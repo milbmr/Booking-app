@@ -9,7 +9,8 @@ const MapNoSSR = dynamic(() => import("components/ui/map"), {
 });
 
 const HotelsMain = () => {
-  const isMobile = useMediaQuery("768");
+  const width = useMediaQuery();
+  const isMobile = width < 768;
   return (
     <div className={classes.hotels}>
       <div className={classes.hotels__list}>
