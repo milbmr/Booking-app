@@ -11,7 +11,7 @@ export const LayoutHotelDetail = ({
   return (
     <ErroBoundaryWrapper>
       <NavigationBar />
-      <div className="container">{children}</div>
+      <div>{children}</div>
       <Footer />
     </ErroBoundaryWrapper>
   );

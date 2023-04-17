@@ -6,8 +6,6 @@ import { useAppDispatch } from "store/hooks";
 import { hotelActions } from "store/slices/hotels-slice";
 import { ImageType } from "types";
 
-const images = ["france", "london", "madrid", "rome", "vienna"];
-
 const ImageGrid = ({ images }: { images: ImageType[] | undefined }) => {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useAppDispatch();

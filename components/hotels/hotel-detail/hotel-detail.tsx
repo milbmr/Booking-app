@@ -14,9 +14,9 @@ import { BsCheckCircleFill } from "react-icons/bs";
 import { randomPrice } from "lib/helpers";
 import { filter } from "utils";
 import { amenityData } from "lib/icons";
-import { useAppSelector } from "store/hooks";
+import MobileCarousel from "components/ui/mobile-carousel/mobile-carousel";
+import classNames from "classnames";
 import { useState, useMemo } from "react";
-import { HotelDataType } from "types";
 import AmenitiesList from "components/ui/amenties/amenities-list";
 import OverviewIcons from "components/ui/overview-icons";
 
@@ -28,7 +28,7 @@ const HotelDetail = () => {
   const [showAmenities, setShowAmenities] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const width = useMediaQuery();
-  const isMobile = width < 768;
+  const isMobile = width < 516;
 
   const router = useRouter();
   const { hotelid } = router.query;
@@ -36,7 +36,7 @@ const HotelDetail = () => {
   const { data: hotels } = useGetHotelQuery();
 
   const style = showAmenities ? { transform: "rotate(180deg)" } : {};
-  const carouselCols = isMobile ? 2 : 4;
+  const carouselCols = isMobile ? 1 : 2;
 
   const [hotel] = hotels ? hotels.filter((hotel) => hotel._id === hotelid) : [];
 
@@ -79,79 +79,111 @@ const HotelDetail = () => {
 
   return (
     <div className={classes.hotel}>
-      <Locations
-        country={countryData}
-        city={city.content.toLowerCase()}
-        hotel={name.content}
-      />
-      <div className={classes.hotel__header}>
-        <HotelHeading
-          name={name.content}
-          address={address.content}
-          group={categoryGroupCode}
-          price={randomPrice(coordinates.longitude)}
-          rating={coordinates.longitude}
-        />
-        <ImageGrid images={images} />
-      </div>
-
-      <div className={`detail-section ${classes.hotel__info}`}>
-        <h2 className={`secondary-heading ${classes.hotel__info_overview}`}>
-          Overview
-        </h2>
-        <p className={classes.hotel__info_description}>
-          {showMore
-            ? description.content
-            : `${description.content.substring(0, 250)}...`}
-          <button
-            onClick={() => setShowMore(!showMore)}
-            className={classes.hotel__readbtn}
-          >
-            {showMore ? "Read less" : "Read more"}
-          </button>
-        </p>
-        <div className={classes.hotel__info_amenities}>
-          <OverviewIcons
-            iconData={amentiesData}
-            ratingNum={coordinates.longitude}
+      {isMobile && <MobileCarousel images={images} />}
+      {!isMobile && (
+        <>
+          <Locations
+            country={countryData}
+            city={city.content.toLowerCase()}
+            hotel={name.content}
           />
-        </div>
-      </div>
-
-      <div className={`detail-section ${classes.hotel__other}`}>
-        <CarouselHeader title="You might also like" />
-        <Carousel data={hotels} column={carouselCols} itemNumber={10} />
-      </div>
-
-      <div className={`detail-section ${classes.hotel__location}`}>
-        <h2 className={`secondary-heading`}>Location</h2>
-        <div className={classes.hotel__location_map}>
-          <MapNoSSR />
-        </div>
-      </div>
-
-      <div className={`detail-section ${classes.hotel__amenities}`}>
-        <h2 className={`secondary-heading`}>Amenities</h2>
-        <div className={classes.hotel__amenties_facility}>
-          <Amenities amentiesData={amentiesData} />
-        </div>
-        <button
-          onClick={() => setShowAmenities(!showAmenities)}
-          className={classes.hotel__amenities_button}
-        >
-          {showAmenities
-            ? "Show fewer amenities"
-            : `Show All ${facilities && facilities.length} amenities`}
-          <BiChevronDown
-            style={style}
-            className={classes.hotel__amenities_button_icon}
-          />
-        </button>
-        {showAmenities && (
-          <div className={classes.hotel__amenities_list}>
-            <AmenitiesList facilityList={facilityGroupe} />
+          <div className={classes.hotel__header}>
+            <HotelHeading
+              name={name.content}
+              address={address.content}
+              group={categoryGroupCode}
+              price={randomPrice(coordinates.longitude)}
+              rating={coordinates.longitude}
+            />
+            <ImageGrid images={images} />
           </div>
-        )}
+        </>
+      )}
+
+      <div className={classNames({ [classes.hotel__container]: isMobile })}>
+        <div
+          className={classNames(
+            { "detail-section": !isMobile, "mobile-section": isMobile },
+            classes.hotel__info
+          )}
+        >
+          <h2 className={`secondary-heading ${classes.hotel__info_overview}`}>
+            Overview
+          </h2>
+          <p className={classes.hotel__info_description}>
+            {showMore
+              ? description.content
+              : `${description.content.substring(0, 250)}...`}
+            <button
+              onClick={() => setShowMore(!showMore)}
+              className={classes.hotel__readbtn}
+            >
+              {showMore ? "Read less" : "Read more"}
+            </button>
+          </p>
+          <div className={classes.hotel__info_amenities}>
+            <OverviewIcons
+              iconData={amentiesData}
+              ratingNum={coordinates.longitude}
+            />
+          </div>
+        </div>
+
+        <div
+          className={classNames(
+            { "detail-section": !isMobile, "mobile-section": isMobile },
+            classes.hotel__other
+          )}
+        >
+          <CarouselHeader mobile={isMobile} title="You might also like" />
+          <Carousel
+            mobile={isMobile}
+            data={hotels}
+            column={carouselCols}
+            itemNumber={10}
+          />
+        </div>
+
+        <div
+          className={classNames(
+            { "detail-section": !isMobile, "mobile-section": isMobile },
+            classes.hotel__location
+          )}
+        >
+          <h2 className={`secondary-heading`}>Location</h2>
+          <div className={classes.hotel__location_map}>
+            <MapNoSSR />
+          </div>
+        </div>
+
+        <div
+          className={classNames(
+            { "detail-section": !isMobile, "mobile-section": isMobile },
+            classes.hotel__amenities
+          )}
+        >
+          <h2 className={`secondary-heading`}>Amenities</h2>
+          <div className={classes.hotel__amenties_facility}>
+            <Amenities amentiesData={amentiesData} />
+          </div>
+          <button
+            onClick={() => setShowAmenities(!showAmenities)}
+            className={classes.hotel__amenities_button}
+          >
+            {showAmenities
+              ? "Show fewer amenities"
+              : `Show All ${facilities && facilities.length} amenities`}
+            <BiChevronDown
+              style={style}
+              className={classes.hotel__amenities_button_icon}
+            />
+          </button>
+          {showAmenities && (
+            <div className={classes.hotel__amenities_list}>
+              <AmenitiesList facilityList={facilityGroupe} />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

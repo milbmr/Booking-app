@@ -1,40 +1,54 @@
 .container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 3fr 1.5fr;
   gap: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 0.8rem 0.3rem rgba(0, 0, 0, 0.15);
   background-color: var(--color-white);
   margin-bottom: 2rem;
   height: 20rem;
+
+  @media screen and (max-width: 32.25em) {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 17rem 1fr;
+    gap: 0;
+    height: 30rem;
+  }
 
   &:last-child {
     margin-bottom: 0;
   }
 
-  &__info {
-    flex: 3 3 0;
-    padding: 1rem;
-
-    display: flex;
-    gap: 1.5rem;
-  }
-
   &__image {
-    flex: 1.8 1.8 0;
+    @media screen and (max-width: 32.25em) {
+      grid-column: 1/-1;
+    }
 
     &_img {
       width: 100%;
       height: 100%;
       background-position: center;
       display: block;
-      border-radius: 8px;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+
+      @media screen and (max-width: 32.25em) {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom-left-radius: 0px;
+      }
     }
   }
 
   &__hotel {
     display: flex;
     flex-direction: column;
-    flex: 2 2 0;
+    padding: 1rem 0;
+
+    @media screen and (max-width: 32.25em) {
+      grid-column: 1/4;
+      padding: 1rem;
+    }
 
     &_name {
       font-size: var(--font-sm-2);
@@ -61,11 +75,14 @@
   }
 
   &__action {
-    flex: 1 1 0;
     border-left: 1px solid var(--color-grey-light);
     padding: 1rem;
     display: flex;
     flex-direction: column;
+
+    @media screen and (max-width: 32.25em) {
+      grid-column: 4/6;
+    }
 
     &_price {
       font-size: var(--font-md-2);

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CarouselItem from "../carousel-item";
+import classNames from "classnames";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { HotelDataType } from "types";
 import classes from "./carousel.module.scss";
@@ -10,11 +11,13 @@ const Carousel = ({
   data,
   itemNumber,
   localImages,
+  mobile = false,
 }: {
   column?: number;
   data?: HotelDataType[];
   itemNumber?: number;
   localImages?: string[];
+  mobile?: boolean;
 }) => {
   const [index, setIndex] = useState<number>(0);
   const [classHideRight, setClassHideRight] = useState("");
@@ -66,7 +69,7 @@ const Carousel = ({
   };
 
   return (
-    <div className="container">
+    <div className={classNames({ container: !mobile })}>
       <div className={classes.carousel}>
         <div className={classes.carousel__items}>{mappedData}</div>
         <button

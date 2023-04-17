@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAppSelector, useAppDispatch } from "store/hooks";
 import { hotelActions } from "store/slices/hotels-slice";
 import { ImageType } from "types";
+import useMediaQuery from "hook/use-media-query";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import classes from "./modal.module.scss";
 
@@ -19,8 +20,8 @@ const Modal = ({
   const [hideRight, setHideRight] = useState("");
   const [disableRight, setDisableRight] = useState(false);
   const [disableLeft, setDisableLeft] = useState(true);
-
-  console.log(disableRight, disableLeft)
+  const width = useMediaQuery();
+  const isMobile = width < 768;
 
   const showHideHandler = (direction: string) => () => {
     if (direction === "left" && show >= 1) {
@@ -48,8 +49,11 @@ const Modal = ({
     }
   };
 
+  const carouslImages = isMobile ? 500 : 1000;
+
   const style = (idx: number) => ({
-    transform: `translateX(-${show * 1000}%)`,
+    transform: `translateX(-${show * carouslImages}%)`,
+    minWidth: isMobile ? "25%" : "",
     "--element-opacity": idx === imageIndex ? "0" : "",
     "--element-border":
       idx === imageIndex ? "3px solid var(--color-primary)" : "",
@@ -93,14 +97,22 @@ const Modal = ({
             onClick={showHideHandler("left")}
             disabled={disableLeft}
           >
-            <BiChevronLeft className={classes.modal__icon} size="2.2rem" opacity=".5"/>
+            <BiChevronLeft
+              className={classes.modal__icon}
+              size="2.2rem"
+              opacity=".5"
+            />
           </button>
           <button
             className={`${classes.modal_btn} ${classes.modal_rightbtn} ${hideRight}`}
             onClick={showHideHandler("right")}
             disabled={disableRight}
           >
-            <BiChevronRight className={classes.modal__icon} size="2.2rem"  opacity=".5"/>
+            <BiChevronRight
+              className={classes.modal__icon}
+              size="2.2rem"
+              opacity=".5"
+            />
           </button>
         </div>
         <button className={classes.modal__close} onClick={closeModal}>

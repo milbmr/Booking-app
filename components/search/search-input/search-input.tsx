@@ -6,7 +6,7 @@ import classes from "./search-input.module.scss";
 import { MdLocationOn } from "react-icons/md";
 
 const SearchInput = ({ data }: { data: city[] }) => {
-  const [hideCard, setHideCard] = useState(true)
+  const [hideCard, setHideCard] = useState(true);
   const cardRef = useRef<HTMLDivElement>(null);
   const {
     searchedInput,
@@ -19,14 +19,14 @@ const SearchInput = ({ data }: { data: city[] }) => {
   } = useAutoComplete(data);
 
   useClick(() => {
-    setHideCard(true)
+    setHideCard(true);
   }, cardRef);
 
   useEffect(() => {
-    if(suggestions.length !== 0) {
-      setHideCard(false)
+    if (suggestions.length !== 0) {
+      setHideCard(false);
     }
-  }, [suggestions])
+  }, [suggestions]);
 
   return (
     <div ref={cardRef} className="relative">
@@ -50,6 +50,7 @@ const SearchInput = ({ data }: { data: city[] }) => {
               className={`${classes.input_card__item} ${
                 idx === activeSuggestion - 1 && classes.input_card__active
               }`}
+              onClick={() => handleClick(item)}
             >
               <h4 className={classes.input_card__text}>
                 {item.city}, {item.country}
