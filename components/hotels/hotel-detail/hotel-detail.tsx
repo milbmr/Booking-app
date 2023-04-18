@@ -36,7 +36,7 @@ const HotelDetail = () => {
   const { data: hotels } = useGetHotelQuery();
 
   const style = showAmenities ? { transform: "rotate(180deg)" } : {};
-  const carouselCols = isMobile ? 1 : 2;
+  const carouselCols = isMobile ? 1 : 3;
 
   const [hotel] = hotels ? hotels.filter((hotel) => hotel._id === hotelid) : [];
 

@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 const useTouch = (length: number) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [distance, setDistance] = useState(0);
   const [initialTouchPosition, setInitialTouchPosition] = useState(0);
   const [isSwiping, setIsSwiping] = useState(false);
   const slideWidth =
@@ -18,7 +19,8 @@ const useTouch = (length: number) => {
       const touchPosition = event.touches[0].clientX;
       const distance = touchPosition - initialTouchPosition;
       if (containerRef.current) {
-        //containerRef.current.style.transform = `translateX(${distance}px)`;
+        setDistance(distance)
+        containerRef.current.style.transform = `translateX(${distance}px)`;
       }
     }
   };
@@ -47,6 +49,7 @@ const useTouch = (length: number) => {
   return {
     containerRef,
     currentSlideIndex,
+    distance,
     handleTouchEnd,
     handleTouchStart,
     handleTouchMove,

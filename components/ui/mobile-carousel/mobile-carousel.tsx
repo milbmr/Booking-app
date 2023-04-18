@@ -8,6 +8,7 @@ const MobileCarousel = ({ images }: { images: ImageType[] | undefined }) => {
   const {
     containerRef,
     currentSlideIndex,
+    distance,
     handleTouchEnd,
     handleTouchStart,
     handleTouchMove,
