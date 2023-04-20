@@ -1,25 +1,23 @@
-.carousel {
-    height: 30rem;
+.swipe {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  height: 30rem;
+  transition: all 0.3 ease-in-out;
+}
+
+.image {
+  min-width: 100%;
+  height: auto;
+  transition: all ease-in-out 0.5s;
+
+  &__img {
+    display: block;
     width: 100%;
-    overflow: hidden;
+    min-height: 100%;
+  }
+}
 
-    &__swipe {
-        display: flex;
-        flex-direction: row;
-        list-style: none;
-        height: 100%;
-        transition: all .3 ease-in-out;
-    }
-
-    &__image {
-        min-width: 100%;
-        height: auto;
-        transition: all ease-in-out .5s;
-
-        &__img{
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-    }
+.pagination {
+    background-color: #000;
 }
