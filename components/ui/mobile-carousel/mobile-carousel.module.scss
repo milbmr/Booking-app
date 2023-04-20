@@ -1,11 +1,25 @@
 .carousel {
-    display: flex;
     height: 30rem;
+    width: 100%;
     overflow: hidden;
+
+    &__swipe {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        height: 100%;
+        transition: all .3 ease-in-out;
+    }
 
     &__image {
         min-width: 100%;
-        height: 100%;
+        height: auto;
         transition: all ease-in-out .5s;
+
+        &__img{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
     }
 }
